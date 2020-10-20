@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DomainModel
 {
-    public class Class1
+    class MainService
     {
     }
 }
