@@ -11,8 +11,8 @@
 
 Дополнительно организовать логгирование результатов в БД.
 # Используемые технологии
-* C#
-* Windows Forms
-* MVP (Pattern)
-* NHibernate
-* SQLite
+* Язык программирования - C#
+* Оболочка - Windows Forms
+* Паттерн - MVP
+* ORM - NHibernate
+* База данных - SQLite
