@@ -63,6 +63,7 @@
             this.btnSendEmail.TabIndex = 12;
             this.btnSendEmail.Text = "Отправить";
             this.btnSendEmail.UseVisualStyleBackColor = true;
+            this.btnSendEmail.Click += new System.EventHandler(this.btnSendEmail_Click);
             // 
             // groupBox2
             // 
