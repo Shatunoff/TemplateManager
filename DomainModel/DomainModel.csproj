@@ -47,6 +47,11 @@
     <Compile Include="Services\EmailService.cs" />
     <Compile Include="Services\MainService.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Presentation\Presentation.csproj">
+      <Project>{8440eaec-031e-4e5f-9139-10976638e776}</Project>
+      <Name>Presentation</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
