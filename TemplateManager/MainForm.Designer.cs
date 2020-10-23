@@ -72,6 +72,7 @@
             this.btnPrintFormSave.TabIndex = 10;
             this.btnPrintFormSave.Text = "Сохранить форму в корне программы";
             this.btnPrintFormSave.UseVisualStyleBackColor = true;
+            this.btnPrintFormSave.Click += new System.EventHandler(this.btnPrintFormSave_Click);
             // 
             // label5
             // 
@@ -98,6 +99,8 @@
             this.tbPrintFormName.Name = "tbPrintFormName";
             this.tbPrintFormName.Size = new System.Drawing.Size(217, 20);
             this.tbPrintFormName.TabIndex = 7;
+            this.tbPrintFormName.TextChanged += new System.EventHandler(this.tbPrintFormName_TextChanged);
+            this.tbPrintFormName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbPrintFormName_KeyDown);
             // 
             // btnPrintFormSendToPrint
             // 
@@ -108,6 +111,7 @@
             this.btnPrintFormSendToPrint.TabIndex = 6;
             this.btnPrintFormSendToPrint.Text = "Распечатать форму";
             this.btnPrintFormSendToPrint.UseVisualStyleBackColor = true;
+            this.btnPrintFormSendToPrint.Click += new System.EventHandler(this.btnPrintFormSendToPrint_Click);
             // 
             // btnPrintFormSendOnEmail
             // 
@@ -118,6 +122,7 @@
             this.btnPrintFormSendOnEmail.TabIndex = 5;
             this.btnPrintFormSendOnEmail.Text = "Отправить на Email";
             this.btnPrintFormSendOnEmail.UseVisualStyleBackColor = true;
+            this.btnPrintFormSendOnEmail.Click += new System.EventHandler(this.btnPrintFormSendOnEmail_Click);
             // 
             // btnTemplateSelect
             // 
@@ -127,6 +132,7 @@
             this.btnTemplateSelect.TabIndex = 13;
             this.btnTemplateSelect.Text = "Выбрать";
             this.btnTemplateSelect.UseVisualStyleBackColor = true;
+            this.btnTemplateSelect.Click += new System.EventHandler(this.btnTemplateSelect_Click);
             // 
             // groupBox1
             // 
@@ -151,6 +157,7 @@
             this.btnFieldValueSave.TabIndex = 6;
             this.btnFieldValueSave.Text = "Сохранить";
             this.btnFieldValueSave.UseVisualStyleBackColor = true;
+            this.btnFieldValueSave.Click += new System.EventHandler(this.btnFieldValueSave_Click);
             // 
             // label3
             // 
@@ -177,6 +184,8 @@
             this.tbFieldValue.Name = "tbFieldValue";
             this.tbFieldValue.Size = new System.Drawing.Size(205, 20);
             this.tbFieldValue.TabIndex = 2;
+            this.tbFieldValue.TextChanged += new System.EventHandler(this.tbFieldValue_TextChanged);
+            this.tbFieldValue.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbFieldValue_KeyDown);
             // 
             // lbFields
             // 
@@ -186,6 +195,9 @@
             this.lbFields.Name = "lbFields";
             this.lbFields.Size = new System.Drawing.Size(220, 147);
             this.lbFields.TabIndex = 0;
+            this.lbFields.SelectedIndexChanged += new System.EventHandler(this.lbFields_SelectedIndexChanged);
+            this.lbFields.DataSourceChanged += new System.EventHandler(this.lbFields_DataSourceChanged);
+            this.lbFields.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lbFields_MouseUp);
             // 
             // tbTemplatePath
             // 
@@ -195,6 +207,7 @@
             this.tbTemplatePath.ReadOnly = true;
             this.tbTemplatePath.Size = new System.Drawing.Size(342, 20);
             this.tbTemplatePath.TabIndex = 11;
+            this.tbTemplatePath.TextChanged += new System.EventHandler(this.tbTemplatePath_TextChanged);
             // 
             // label1
             // 
