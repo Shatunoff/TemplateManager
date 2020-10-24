@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="DomainModel"
+                   namespace="DomainModel">
+  <class name="PrintForm">
+    <id name="Id">
+      <generator class="native"/>
+    </id>
+    <property name="TemplateFilePath"/>
+    <property name="SavedPrintFormFullPath"/>
+    <property name="DateTimeOfSaveForm"/>
+    <property name="DateTimeOfSendToPrint"/>
+  </class>
+</hibernate-mapping>

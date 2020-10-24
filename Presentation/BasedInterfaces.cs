@@ -58,8 +58,8 @@ namespace Presentation
 
     public interface IMainModel
     {
+        IPrintForm Model { get; set; }                              // Модель данных
         List<string> FieldListAsList { get; }                       // Список полей шаблона
-        string SavedPrintFormFullPath { get; }                      // Путь к сохраненной форме
 
         bool FieldListContainsName(string name);                    // Проверить, содержится ли указанное поле в списке
         bool IsFileExist(string fileName);                          // Проверить указанный файл на существование
@@ -68,6 +68,21 @@ namespace Presentation
         void SetFieldValue(string fieldName, string fieldValue);    // Установить значение для указанного поля
         void SaveTemplateToFile(string printFormPath);              // Сохранить файл по указанному пути
         void ToPrintForm();                                         // Отправить файл на печать
+    }
+
+    public interface IMainRepository
+    {
+        void AddPrintFormLog(IPrintForm printForm);                 // Добавить лог печатной формы в базу
+        void UpdatePrintFormLog(IPrintForm printForm);              // Обновить лог печатной формы в базу (для добавления времени печати)
+    }
+
+    public interface IPrintForm
+    {
+        int Id { get; set; }
+        string DateTimeOfSaveForm { get; set; }
+        string DateTimeOfSendToPrint { get; set; }
+        string TemplateFilePath { get; set; }
+        string SavedPrintFormFullPath { get; set; }
     }
 
     public interface IEmailView : IView
@@ -104,17 +119,28 @@ namespace Presentation
     public interface IEmailModel
     {
         Dictionary<string, int> SmtpDic { get; }                    // Словарь Smtp-сервер-порт
-
-        string SenderEmail { get; set; }                            // Email отправителя
-        string SenderPassword { get; set; }                         // Пароль от Email'а отправителя
-        string RecipientEmail { get; set; }                         // Email получателя
-        string MailSubject { get; set; }                            // Тема письма
-        string MailBody { get; set; }                               // Сообщение
-        string Attachment { get; set; }                             // Вложение
-        string SmtpServer { get; set; }                             // Smtp-сервер
-        int SmtpPort { get; set; }                                  // Порт для подключения к Smtp-серверу
+        IEmail Model { get; set; }
 
         bool IsFileExist(string fileName);                          // Проверить, существует ли файл
         void SendToEmail();                                         // Отправить письмо
+    }
+
+    public interface IEmailRepository
+    {
+        void AddEmailLog(IEmail email);                        // Добавить лог отправки Email в базу
+    }
+
+    public interface IEmail
+    {
+        int Id { get; set; }
+        string SenderEmail { get; set; }
+        string SenderPassword { get; set; }
+        string RecipientEmail { get; set; }
+        string MailSubject { get; set; }
+        string MailBody { get; set; }
+        string Attachment { get; set; }
+        string SmtpServer { get; set; }
+        int SmtpPort { get; set; }
+        string DateTimeOfSendToEmail { get; set; }
     }
 }

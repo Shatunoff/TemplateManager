@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="DomainModel"
+                   namespace="DomainModel">
+  <class name="Email">
+    <id name="Id">
+      <generator class="native"/>
+    </id>
+    <property name="SenderEmail"/>
+    <property name="RecipientEmail"/>
+    <property name="MailSubject"/>
+    <property name="MailBody"/>
+    <property name="Attachment"/>
+    <property name="SmtpServer"/>
+    <property name="SmtpPort"/>
+    <property name="DateTimeOfSendToEmail"/>
+  </class>
+</hibernate-mapping>
