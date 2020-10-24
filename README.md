@@ -21,7 +21,7 @@
 ```xml
 <property name="connection.connection_string">Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=TemplateManager;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False</property>
 ```
-При необходимости (если ваш SQL Server более ранний) изменить диалект:
+При необходимости (если ваш SQL Server более ранний) изменить диалект ([см. Диалекты в NHibernate](https://nhibernate.info/doc/nh/en/index.html#configuration-optional-dialects)):
 ```xml
 <property name="dialect">NHibernate.Dialect.MsSql2012Dialect</property>
 ```
