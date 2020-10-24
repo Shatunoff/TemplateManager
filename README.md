@@ -16,3 +16,12 @@
 * Паттерн - MVP
 * ORM - NHibernate
 * База данных - SQL Server
+# Перед запуском
+Необходимо обновить файл `hibernate.cfg.xml` в соответствии со своим SQL-сервером.
+```xml
+<property name="connection.connection_string">Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=TemplateManager;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False</property>
+```
+При необходимости (если ваш SQL Server более ранний) изменить диалект:
+```xml
+<property name="dialect">NHibernate.Dialect.MsSql2012Dialect</property>
+```
