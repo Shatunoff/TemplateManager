@@ -16,12 +16,11 @@ using System.Diagnostics;
 
 namespace DomainModel
 {
-    class MainModel : IMainModel
+    public class MainModel : IMainModel
     {
-        private string templateFilePath;
         private Dictionary<string, string> dicTemplateFields; // Словарь, содержащий поле шаблона и указанное значение
 
-        public string SavedPrintFormFullPath { get; private set; }
+        public IPrintForm Model { get; set; }
 
         public List<string> FieldListAsList
         {
@@ -34,6 +33,7 @@ namespace DomainModel
         public MainModel()
         {
             dicTemplateFields = new Dictionary<string, string>();
+            Model = new PrintForm();
         }
 
         // Открыть файл шаблона
@@ -41,9 +41,9 @@ namespace DomainModel
         {
             try
             {
-                templateFilePath = templatePath;
+                Model.TemplateFilePath = templatePath;
                 dicTemplateFields.Clear();
-                SavedPrintFormFullPath = null;
+                Model.SavedPrintFormFullPath = null;
                 byte[] textByteArray = File.ReadAllBytes(templatePath);                             // Получаем массив байтов из нашего файла
 
                 using (MemoryStream stream = new MemoryStream())                                    // Начинаем работу с потоком
@@ -107,7 +107,7 @@ namespace DomainModel
             try
             {
                 // Получаем массив байтов из нашего файла
-                byte[] textByteArray = File.ReadAllBytes(templateFilePath);
+                byte[] textByteArray = File.ReadAllBytes(Model.TemplateFilePath);
 
                 // Начинаем работу с потоком
                 using (MemoryStream stream = new MemoryStream())
@@ -150,7 +150,9 @@ namespace DomainModel
                     // Записываем всё в наш файл
                     string filePath = Directory.GetCurrentDirectory() + "\\" + fileName;
                     File.WriteAllBytes(filePath, stream.ToArray());
-                    SavedPrintFormFullPath = filePath;
+                    Model.SavedPrintFormFullPath = filePath;
+                    Model.DateTimeOfSaveForm = DateTime.Now.ToString("yyyy-MM-dd HH-mm-ss");
+                    Model.DateTimeOfSendToPrint = String.Empty;
                 }
             }
             catch (Exception ex)
@@ -166,12 +168,13 @@ namespace DomainModel
                 using (PrintDialog pd = new PrintDialog())
                 {
                     pd.ShowDialog();
-                    ProcessStartInfo info = new ProcessStartInfo($"{SavedPrintFormFullPath}");
+                    ProcessStartInfo info = new ProcessStartInfo($"{Model.SavedPrintFormFullPath}");
                     info.WindowStyle = ProcessWindowStyle.Hidden;
                     info.Verb = "PrintTo";
                     info.Arguments = pd.PrinterSettings.PrinterName;
                     info.CreateNoWindow = true;
                     Process.Start(info);
+                    Model.DateTimeOfSendToPrint = DateTime.Now.ToString("yyyy-MM-dd HH-mm-ss");
                 }
             }
             catch (Exception ex)

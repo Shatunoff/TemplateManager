@@ -7,8 +7,9 @@ namespace DomainModel
     public class MainService : IMainService
     {
         private readonly IMainModel _model; // Модель данных
+        private readonly IMainRepository _repository; // Взаимодействие с БД
 
-        public string SavedPrintFormFullPath { get { return _model.SavedPrintFormFullPath; } }
+        public string SavedPrintFormFullPath { get { return _model.Model.SavedPrintFormFullPath; } }
 
         public List<string> FieldList
         {
@@ -18,6 +19,7 @@ namespace DomainModel
         public MainService()
         {
             _model = new MainModel();
+            _repository = new MainRepository();
         }
 
         public bool FieldListContainsName(string name) => _model.FieldListContainsName(name);                           // Проверить, содержится ли поле в списке
@@ -32,6 +34,7 @@ namespace DomainModel
             try
             {
                 _model.SaveTemplateToFile(printFormPath);
+                _repository.AddPrintFormLog(_model.Model);
             }
             catch (Exception ex)
             {
@@ -45,6 +48,15 @@ namespace DomainModel
             try
             {
                 _model.ToPrintForm();
+                if (String.IsNullOrEmpty(_model.Model.DateTimeOfSendToPrint))
+                {
+                    _repository.UpdatePrintFormLog(_model.Model);
+                }
+                else
+                {
+                    _repository.AddPrintFormLog(_model.Model);
+                    _repository.UpdatePrintFormLog(_model.Model);
+                }
             }
             catch (Exception ex)
             {

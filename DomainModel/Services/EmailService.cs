@@ -10,6 +10,7 @@ namespace DomainModel
     public class EmailService : IEmailService
     {
         private readonly IEmailModel _model; // Модель данных
+        private readonly IEmailRepository _repository; // Взаимодействие с БД
 
         public Dictionary<string, int> SmtpDic
         {
@@ -19,6 +20,7 @@ namespace DomainModel
         public EmailService()
         {
             _model = new EmailModel();
+            _repository = new EmailRepository();
         }
 
         // Проверить файл на существование
@@ -33,6 +35,7 @@ namespace DomainModel
             try
             {
                 _model.SendToEmail();
+                _repository.AddEmailLog(_model.Model);
             }
             catch (Exception ex)
             {
@@ -43,29 +46,29 @@ namespace DomainModel
         // Установить параметры письма
         public void SetMail(string subject, string body, string attach)
         {
-            _model.MailSubject = subject;
-            _model.MailBody = body;
-            _model.Attachment = attach;
+            _model.Model.MailSubject = subject;
+            _model.Model.MailBody = body;
+            _model.Model.Attachment = attach;
         }
 
         // Установить параметры получателя
         public void SetRecipient(string recipientEmail)
         {
-            _model.RecipientEmail = recipientEmail;
+            _model.Model.RecipientEmail = recipientEmail;
         }
 
         // Установить параметры отправителя
         public void SetSender(string senderEmail, string senderPassword)
         {
-            _model.SenderEmail = senderEmail;
-            _model.SenderPassword = senderPassword;
+            _model.Model.SenderEmail = senderEmail;
+            _model.Model.SenderPassword = senderPassword;
         }
 
         // Установить параметры Smtp-сервера
         public void SetSmtp(string smtpServer, int smtpPort)
         {
-            _model.SmtpServer = smtpServer;
-            _model.SmtpPort = smtpPort;
+            _model.Model.SmtpServer = smtpServer;
+            _model.Model.SmtpPort = smtpPort;
         }
     }
 }
