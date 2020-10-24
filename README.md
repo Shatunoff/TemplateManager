@@ -15,4 +15,4 @@
 * Оболочка - Windows Forms
 * Паттерн - MVP
 * ORM - NHibernate
-* База данных - SQLite
+* База данных - SQL Server
