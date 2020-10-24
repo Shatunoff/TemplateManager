@@ -17,7 +17,8 @@
 * ORM - NHibernate
 * База данных - SQL Server
 # Перед запуском
-Необходимо обновить файл `hibernate.cfg.xml` в соответствии со своим SQL-сервером.
+Перед запуском необходимо создать БД, в которую будет осуществляться логгирование данных.
+Также необходимо обновить файл `hibernate.cfg.xml` в соответствии со своими SQL-сервером и БД.
 ```xml
 <property name="connection.connection_string">Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=TemplateManager;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False</property>
 ```
