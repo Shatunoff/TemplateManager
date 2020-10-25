@@ -9,6 +9,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation", "Presentatio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainModel", "DomainModel\DomainModel.csproj", "{AE438F51-4414-4541-8FB9-29D6948469D5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ExampleTemplate", "ExampleTemplate", "{2ADA44C5-2A4B-4911-8492-B59829FFA91C}"
+	ProjectSection(SolutionItems) = preProject
+		E:\YANDEX\5_Мои проекты\Шатунов В.А. - Тестовое задание\хлынов\ШаблонДоверенностиНаТС.docx = E:\YANDEX\5_Мои проекты\Шатунов В.А. - Тестовое задание\хлынов\ШаблонДоверенностиНаТС.docx
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
