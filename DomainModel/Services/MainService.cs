@@ -47,15 +47,15 @@ namespace DomainModel
         {
             try
             {
-                _model.ToPrintForm();
                 if (String.IsNullOrEmpty(_model.Model.DateTimeOfSendToPrint))
                 {
+                    _model.ToPrintForm();
                     _repository.UpdatePrintFormLog(_model.Model);
                 }
                 else
                 {
+                    _model.ToPrintForm();
                     _repository.AddPrintFormLog(_model.Model);
-                    _repository.UpdatePrintFormLog(_model.Model);
                 }
             }
             catch (Exception ex)
