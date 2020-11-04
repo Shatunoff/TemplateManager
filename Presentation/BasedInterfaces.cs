@@ -56,20 +56,6 @@ namespace Presentation
         void ToPrintForm();                                         // Отправить файл на печать
     }
 
-    public interface IMainModel
-    {
-        IPrintForm Model { get; set; }                              // Модель данных
-        List<string> FieldListAsList { get; }                       // Список полей шаблона
-
-        bool FieldListContainsName(string name);                    // Проверить, содержится ли указанное поле в списке
-        bool IsFileExist(string fileName);                          // Проверить указанный файл на существование
-        string GetFieldValue(string selectedFieldName);             // Получить значение для указанного поля
-        void OpenTemplate(string filePath);                         // Открыть шаблон по указанному пути
-        void SetFieldValue(string fieldName, string fieldValue);    // Установить значение для указанного поля
-        void SaveTemplateToFile(string printFormPath);              // Сохранить файл по указанному пути
-        void ToPrintForm();                                         // Отправить файл на печать
-    }
-
     public interface IMainRepository
     {
         void AddPrintFormLog(IPrintForm printForm);                 // Добавить лог печатной формы в базу
@@ -116,21 +102,12 @@ namespace Presentation
         void SetRecipient(string recipientEmail);                   // Установить параметры получателя
     }
 
-    public interface IEmailModel
-    {
-        Dictionary<string, int> SmtpDic { get; }                    // Словарь Smtp-сервер-порт
-        IEmail Model { get; set; }
-
-        bool IsFileExist(string fileName);                          // Проверить, существует ли файл
-        void SendToEmail();                                         // Отправить письмо
-    }
-
     public interface IEmailRepository
     {
         void AddEmailLog(IEmail email);                        // Добавить лог отправки Email в базу
     }
 
-    public interface IEmail
+    public interface IEmail // Модель данных
     {
         int Id { get; set; }
         string SenderEmail { get; set; }
